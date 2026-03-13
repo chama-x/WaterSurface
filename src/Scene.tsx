@@ -111,15 +111,14 @@ export default function Scene() {
 			{controls.perfMonitor && <Perf position={'top-left'} />}
 
 			<Environment
-				//preset='studio'
 				background
 				files={[
-					'cubemap/sunset/right.png',
-					'cubemap/sunset/left.png',
-					'cubemap/sunset/top.png',
-					'cubemap/sunset/bot.png',
-					'cubemap/sunset/front.png',
-					'cubemap/sunset/back.png',
+					'/cubemap/sunset/right.png',
+					'/cubemap/sunset/left.png',
+					'/cubemap/sunset/top.png',
+					'/cubemap/sunset/bot.png',
+					'/cubemap/sunset/front.png',
+					'/cubemap/sunset/back.png',
 				]}
 			/>
 
@@ -159,9 +158,9 @@ export default function Scene() {
 				</WaterSurfaceComplex>
 			)}
 
-			<EffectComposer>
+			{/* <EffectComposer>
 				<N8AO intensity={5} aoRadius={8} halfRes />
-			</EffectComposer>
+			</EffectComposer> */}
 
 			<Float
 				speed={2}
