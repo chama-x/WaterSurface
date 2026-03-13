@@ -1,6 +1,6 @@
 import { useMemo, useRef } from 'react';
-import { PlaneGeometry, RepeatWrapping, Vector2, Vector3 } from 'three';
-import { useFrame, useThree } from '@react-three/fiber';
+import { PlaneGeometry, RepeatWrapping, Vector2 } from 'three';
+import { useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import { WaterSimple } from './Water/WaterSimple';
 
@@ -31,10 +31,9 @@ export default function WaterSurfaceSimple({
 	fxMixColor = 0x000000,
 	children,
 }: Props) {
-	const ref = useRef<any>();
+	const ref = useRef<any>(null);
 	const refPointer = useRef(new Vector2(0, 0));
 
-	const gl = useThree((state) => state.gl);
 	const waterNormals = useTexture('/water/simple/waternormals.jpeg');
 	waterNormals.wrapS = waterNormals.wrapT = RepeatWrapping;
 	const geom = useMemo(
@@ -53,7 +52,6 @@ export default function WaterSurfaceSimple({
 			fxDisplayColorAlpha: fxDisplayColorAlpha,
 			fxMixColor: fxMixColor,
 			fog: false,
-			format: (gl as any).encoding,
 		}),
 		[
 			dimensions,
@@ -61,7 +59,6 @@ export default function WaterSurfaceSimple({
 			fxDisplayColorAlpha,
 			fxDistortionFactor,
 			fxMixColor,
-			gl,
 			waterColor,
 			waterNormals,
 		]

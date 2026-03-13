@@ -28,7 +28,6 @@ type WaterOptions = {
 	flowMap?: Texture;
 	normalMap0?: Texture;
 	normalMap1?: Texture;
-	encoding?: 3000 | 3001 | any;
 	fxDisplayColorAlpha?: number;
 	fxDistortionFactor?: number;
 };
@@ -216,7 +215,7 @@ class WaterComplex extends Mesh {
 		const scale = options.scale || 1;
 		const shader: any = options.shader || WaterComplex.WaterShader;
 		const encoding =
-			options.encoding !== undefined ? options.encoding : 3000;
+			undefined;
 
 		const flowMap = options.flowMap || undefined;
 		const normalMap0 = options.normalMap0;

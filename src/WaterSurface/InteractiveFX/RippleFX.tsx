@@ -35,10 +35,9 @@ export default function RippleFX({
 	const [updateBlending, setBlending] = useBlending({ size, dpr });
 
 	setRipple({
-		//alpha: 0.9,
 		frequency,
 		rotation,
-		fadeout_speed,
+		fadeoutSpeed: fadeout_speed,
 		scale,
 		alpha,
 	});

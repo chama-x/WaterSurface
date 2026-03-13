@@ -1,9 +1,7 @@
 import * as THREE from 'three';
-import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import { GLTF } from 'three-stdlib';
 
-type GLTFResult = GLTF & {
+type GLTFResult = {
 	nodes: {
 		Plane004_Boat_0_1: THREE.Mesh;
 		Plane004_Boat_0_2: THREE.Mesh;
@@ -14,8 +12,8 @@ type GLTFResult = GLTF & {
 	};
 };
 
-export function Boat(props: JSX.IntrinsicElements['group']) {
-	const { nodes, materials } = useGLTF('/boat.glb') as GLTFResult;
+export function Boat(props: React.JSX.IntrinsicElements['group']) {
+	const { nodes, materials } = useGLTF('/boat.glb') as unknown as GLTFResult;
 	return (
 		<group {...props} dispose={null}>
 			<mesh
