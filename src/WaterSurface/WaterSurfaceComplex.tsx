@@ -1,6 +1,5 @@
 import { useMemo, useRef } from 'react';
 import { PlaneGeometry, Vector2 } from 'three';
-import { useThree } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import { WaterComplex } from './Water/WaterComplex';
 import { WaterContext } from './WaterContext';
@@ -34,15 +33,13 @@ export default function WaterSurfaceComplex({
 	fxDistortionFactor = 0.2,
 	fxDisplayColorAlpha = 0.0,
 }: Props) {
-	const ref = useRef<any>();
+	const ref = useRef<any>(null);
 	const refPointer = useRef(new Vector2(0, 0));
 
-	const gl = useThree((state) => state.gl);
 	const [waterNormals1, waterNormals2] = useTexture([
 		'/water/complex/Water_1_M_Normal.jpg',
 		'/water/complex/Water_2_M_Normal.jpg',
 	]);
-	//waterNormals.wrapS = waterNormals.wrapT = RepeatWrapping;
 	const geom = useMemo(
 		() => new PlaneGeometry(width, length),
 		[length, width]
@@ -58,7 +55,6 @@ export default function WaterSurfaceComplex({
 			normalMap0: waterNormals1,
 			normalMap1: waterNormals2,
 			reflectivity: reflectivity,
-			encoding: (gl as any).encoding,
 			fxDistortionFactor: fxDistortionFactor,
 			fxDisplayColorAlpha: fxDisplayColorAlpha,
 		}),
@@ -69,7 +65,6 @@ export default function WaterSurfaceComplex({
 			flowSpeed,
 			fxDisplayColorAlpha,
 			fxDistortionFactor,
-			gl,
 			reflectivity,
 			scale,
 			waterNormals1,

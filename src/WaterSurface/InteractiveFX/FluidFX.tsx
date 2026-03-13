@@ -45,14 +45,14 @@ export default function FluidFX({
 	const [updateBlending] = useBlending({ size, dpr });
 
 	setFluid({
-		density_dissipation: densityDissipation,
-		velocity_dissipation: velocityDissipation,
-		velocity_acceleration: velocityAcceleration,
-		pressure_dissipation: pressureDissipation,
-		splat_radius: splatRadius,
-		curl_strength: curlStrength,
-		pressure_iterations: pressureIterations,
-		fluid_color: fluidColor,
+		densityDissipation,
+		velocityDissipation,
+		velocityAcceleration,
+		pressureDissipation,
+		splatRadius,
+		curlStrength,
+		pressureIterations,
+		fluidColor,
 	});
 
 	const updatePointer = usePointer();
